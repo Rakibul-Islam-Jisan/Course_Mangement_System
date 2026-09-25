@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Course = require('../../models/CourseSchema')
-
+const Student = require('../../models/StudentSchema')
 const deleteCourse = async (req,res)=>{
     try {
         const {id} = req.params
@@ -15,6 +15,11 @@ const deleteCourse = async (req,res)=>{
         }
 
         const deleteCourseByID = await Course.findByIdAndDelete(id)
+
+        await Student.updateMany(
+            {entrolledCourse:id},
+            {$pull:{entrolledCourse:id}}
+        )
 
         return res.status(200).json({
             success:true,
