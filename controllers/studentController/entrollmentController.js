@@ -45,13 +45,13 @@ const entrollment = async (req,res)=>{
             })
         }
 
-        Student.entrolledCourse.push(CourseID)
-        await Student.save()
+        existingStudent.entrolledCourse.push(CourseID)
+        await existingStudent.save()
 
         return res.status(200).json({
             success:true,
             message:'entrollment successfull',
-            data:Student
+            data:existingStudent
         })
     } catch (error) {
         return res.status(400).json({

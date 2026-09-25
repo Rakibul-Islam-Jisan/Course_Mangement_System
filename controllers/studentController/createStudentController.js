@@ -40,7 +40,7 @@ const createStudent = async (req,res)=>{
     
 
     return res.status(200).json({
-        success:false,
+        success:true,
         message:'new student created',
         data:newStudent
     }) 

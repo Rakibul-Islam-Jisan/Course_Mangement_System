@@ -26,7 +26,7 @@ const createCourse = async (req,res)=>{
         })
     }
 
-    const existingCourse = await Course.find({title,category})
+    const existingCourse = await Course.findOne({title,category})
     if(existingCourse)
     {
         return res.status(400).json({

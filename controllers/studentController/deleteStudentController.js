@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const deleteStudent = async (req,res)=>{
    try {
      const {id} = req.params
-    const validStudentID = mongoose.Types.ObjectId(id)
+    const validStudentID = mongoose.Types.ObjectId.isValid(id)
 
     if(!validStudentID)
     {
